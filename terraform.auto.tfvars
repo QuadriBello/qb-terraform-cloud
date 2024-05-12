@@ -25,13 +25,13 @@ tags = {
 
 environment = "dev"
 
-ami-web = "ami-04b70fa74e45c3917"
+ami-web = "ami-0734796755d247eec"
 
-ami-bastion = ""
+ami-bastion = "ami-034a2736159cea8c2"
 
-ami-nginx = ""
+ami-nginx = "ami-094970d4221c1e666"
 
-ami-sonar = ""
+ami-sonar = "ami-0df33a07194ee57f1"
 
 keypair = "qb-ex"
 

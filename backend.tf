@@ -7,3 +7,13 @@
 #     encrypt        = true
 #   }
 # }
+
+terraform {
+  cloud {
+    organization = "qbdevops"
+
+    workspaces {
+      name = "qb-terraform-cloud"
+    }
+  }
+}
