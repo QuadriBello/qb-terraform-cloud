@@ -112,7 +112,7 @@ module "RDS" {
 }
 
 # The Module creates instances for jenkins, sonarqube and jfrog
-module "compute" {
+module "Compute" {
   source          = "./modules/compute"
   ami-jenkins     = var.ami-bastion
   ami-sonar       = var.ami-sonar
