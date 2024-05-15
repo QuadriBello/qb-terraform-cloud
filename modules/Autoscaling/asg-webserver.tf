@@ -41,10 +41,10 @@ resource "aws_autoscaling_group" "tooling-asg" {
   desired_capacity          = var.desired_capacity
   vpc_zone_identifier = var.private_subnets
 
-  # launch_template {
-  #   id      = aws_launch_template.tooling-launch-template.id
-  #   version = "$Latest"
-  # }
+  launch_template {
+    id      = aws_launch_template.tooling-launch-template.id
+    version = "$Latest"
+  }
 
   tag {
     key                 = "Name"
