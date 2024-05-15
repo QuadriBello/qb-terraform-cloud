@@ -1,3 +1,3 @@
 # qb-terraform-cloud
 
-Repository for Terraform IaC project 19
+Repository for Terraform IaC pbl project 19
