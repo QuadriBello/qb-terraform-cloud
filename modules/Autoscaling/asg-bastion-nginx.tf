@@ -76,10 +76,10 @@ resource "aws_autoscaling_group" "nginx-asg" {
   vpc_zone_identifier = var.public_subnets
 
 
-  launch_template {
-    id      = aws_launch_template.nginx-launch-template.id
-    version = "$Latest"
-  }
+  # launch_template {
+  #   id      = aws_launch_template.nginx-launch-template.id
+  #   version = "$Latest"
+  # }
 
   tag {
     key                 = "Name"
