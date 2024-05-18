@@ -26,3 +26,8 @@ output "web-sg" {
 output "datalayer-sg" {
   value = aws_security_group.ACS["datalayer-sg"].id
 }
+
+
+output "compute-sg" {
+  value = aws_security_group.ACS["compute-sg"].id
+}

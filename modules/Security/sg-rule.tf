@@ -18,7 +18,45 @@ resource "aws_security_group_rule" "inbound-alb-https" {
   security_group_id = aws_security_group.ACS["ext-alb-sg"].id
 }
 
-# security group rule for bastion to allow assh access fro your local machine
+# security group for compute module
+resource "aws_security_group_rule" "inbound-bastion-ssh-compute" {
+  from_port         = 22
+  protocol          = "tcp"
+  to_port           = 22
+  type              = "ingress"
+  source_security_group_id = aws_security_group.ACS["bastion-sg"].id
+  security_group_id = aws_security_group.ACS["compute-sg"].id
+}
+
+resource "aws_security_group_rule" "inbound-port-artifcatory" {
+  from_port         = 8081
+  protocol          = "tcp"
+  to_port           = 8081
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.ACS["compute-sg"].id
+}
+
+resource "aws_security_group_rule" "inbound-port-jenkins" {
+  from_port         = 8080
+  protocol          = "tcp"
+  to_port           = 8080
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.ACS["compute-sg"].id
+}
+
+resource "aws_security_group_rule" "inbound-port-sonarqube" {
+  from_port         = 9000
+  protocol          = "tcp"
+  to_port           = 9000
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.ACS["ext-alb-sg"].id
+}
+
+
+# security group rule for bastion to allow ssh access from your local machine
 resource "aws_security_group_rule" "inbound-ssh-bastion" {
   from_port         = 22
   protocol          = "tcp"
@@ -52,7 +90,7 @@ resource "aws_security_group_rule" "inbound-bastion-ssh" {
 
 
 
-# security group for ialb, to have acces only from nginx reverser proxy server
+# security group for ialb, to have access only from nginx reverser proxy server
 
 resource "aws_security_group_rule" "inbound-ialb-https" {
   type                     = "ingress"
